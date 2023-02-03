@@ -1,9 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  useWindowDimensions,
+} from "react-native";
 import Colors from "../../constants/colors";
 
 function Card({ children }) {
-  return <View style={styles.card}>{children}</View>;
+  const { width, height } = useWindowDimensions();
+
+  const widthSize = width < 380 ? "100%" : 500;
+
+  return <View style={[styles.card, { maxWidth: widthSize }]}>{children}</View>;
 }
 
 export default Card;
